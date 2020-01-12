@@ -1,6 +1,5 @@
 # learn-with-emoji
-A memorizing technique with emojis
-
+<a href="https://gansanta.github.io/learn-with-emoji/">A memorizing technique with emojis</a> <br>
 
 
 I should explain it with a poem as an example. Let's take a look at this poem:
