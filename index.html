@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<title>Memorize Text with Emoji</title>
+	
+	<script src="../js/test.js?2fssfvv2"> </script>
+	<style>
+	    #container{
+	        position:sticky;
+	        top:0;
+	    }
+	    #container, h2{
+	        text-align:center;
+	    }
+	    .input_sentence {
+            padding-left:15px; 
+            /*border:2px solid #ccc; */
+            /*-webkit-border-radius: 5px;*/
+            border-radius: 20px;
+            height:100px;
+            width:50%;
+        }
+        
+        #converted_text{
+            font-size:36px;
+            padding:10px;
+        }
+        
+
+	</style>
+</head>
+
+<body>
+    
+    <h2>Memorize Text with Emoji</h2>
+    <div id="container">
+        <textarea id="input" class="input_sentence" placeholder="Insert Text here" type="search"></textarea>
+    </div>
+    
+    <div id="converted_text"></div>
+    
+    <script>
+        let input = document.getElementById("input")
+        input.addEventListener("input", function(){
+            if(this.value != ""){
+                let converted_text = document.getElementById("converted_text")
+                converted_text.style.border = "1px solid red"
+            }
+            else {
+                let converted_text = document.getElementById("converted_text")
+                converted_text.style.border = ""
+            }
+            get_emoji(this.value)
+        })
+        
+        
+        function get_emoji(text){
+            //split text into single letters
+            let charr = [...text.toLowerCase()] //split input text to an array of characters
+            
+            //console.log(charr)
+            
+            
+            let lemojis = {
+                //numbers
+                '0':'🥚','1':'🗼','2':'🐍','3':'🦀','4':'🌲','5':'⭐️','6':'🐌','7':'🧜‍♂️','8':'🕶','9':'🎈',
+                //letters
+                'a':'👽', 'b':'🦇', 'c':'🐈', 'd':'🐬', 'e':'🦅', 'f':'🔥', 'g':'🐠', 'h':'❤️', 'i':'🍦', 'j':'🎎', 'k':'👑', 'l':'🦁', 'm':'🥭', 'n':'🍜', 'o':'🍊', 'p':'🐧', 'q':'👸🏼', 'r':'🚀', 's':'☃️', 't':'🎪', 'u':'🦄', 'v':'🌋', 'w':'🌊', 'x':'🎄', 'y':'🧘', 'z':'🦓'
+            }
+            
+            
+            let charlen = charr.length
+            
+            let converted_text = ""
+            
+            for(let i=0; i<charlen; i++){
+                
+                if(charr[i] == "\r" || charr[i] == "\n"){
+                    converted_text += "<br>"
+                }
+                
+                else if(charr[i] in lemojis){
+                    converted_text += lemojis[charr[i]]
+                }
+                
+                else{
+                    converted_text += charr[i]
+                }
+            }
+            
+            //display it
+            document.getElementById("converted_text").innerHTML = converted_text
+        }   
+        
+        
+    </script>
+</body>
+</html>
